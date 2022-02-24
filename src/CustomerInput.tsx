@@ -14,7 +14,7 @@ export function CustomerInput() {
   }
 
   return (
-    <Form onSumbit={submitRequest}>
+    <Form onSubmit={submitRequest}>
       <TextInput
         label={'subject'}
         labelName={'Your Subject'}

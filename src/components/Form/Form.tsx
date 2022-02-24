@@ -3,9 +3,13 @@ import classes from './Form.module.css'
 
 type FormProps = {
   children: ReactNode
-  onSumbit: React.FormEventHandler<Element>
+  onSubmit: React.FormEventHandler<Element>
 }
 
-export function Form({ children }: FormProps): JSX.Element {
-  return <form className={classes.form}>{children}</form>
+export function Form({ children, onSubmit }: FormProps): JSX.Element {
+  return (
+    <form className={classes.form} onSubmit={onSubmit}>
+      {children}
+    </form>
+  )
 }
