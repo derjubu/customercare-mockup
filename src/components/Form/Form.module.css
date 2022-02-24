@@ -1,0 +1,6 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
+  justify-items: start;
+}
