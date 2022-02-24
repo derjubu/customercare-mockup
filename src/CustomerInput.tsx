@@ -7,9 +7,29 @@ import { TextInput } from './components/TextInput/TextInput'
 export function CustomerInput() {
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+  const currentRequest: any = {
+    subject: subject,
+    message: message,
+  }
+
+  async function sendRequest(newRequest: any) {
+    const response = await fetch('/api/submitRequest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ newRequest }),
+    })
+    if (response.status === 200) {
+      console.log('Request received')
+    } else {
+      console.log('An error occured =(')
+    }
+  }
 
   function submitRequest(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    sendRequest(currentRequest)
     console.log(subject, message)
   }
 
