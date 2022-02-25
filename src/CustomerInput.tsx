@@ -13,14 +13,15 @@ export function CustomerInput() {
   }
 
   async function sendRequest(newRequest: any) {
-    const response = await fetch('/api/submitRequest', {
+    const response = await fetch('http://localhost:3001/api/submitRequest/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ newRequest }),
+      body: JSON.stringify(newRequest),
     })
     if (response.status === 200) {
+      console.log(response)
       console.log('Request received')
     } else {
       console.log('An error occured =(')
@@ -30,7 +31,6 @@ export function CustomerInput() {
   function submitRequest(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     sendRequest(currentRequest)
-    console.log(subject, message)
   }
 
   return (

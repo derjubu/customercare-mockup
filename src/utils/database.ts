@@ -9,5 +9,6 @@ export async function connectToDatabase(url: string): Promise<void> {
 }
 
 export function getDatabase(): Collection<Document> {
-  return client.db().collection('CustomerRequests')
+  console.log('Start Get Database')
+  return client.db().collection('CustomerService')
 }
