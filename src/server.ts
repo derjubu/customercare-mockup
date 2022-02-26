@@ -23,6 +23,8 @@ app.use(function (req: any, res: any, next: any) {
   next()
 })
 
+app.use(express.json())
+
 app.get('/', (_request, response) => {
   response.json('Hello World!')
 })
@@ -34,7 +36,7 @@ app.get('/api/requests/', async (_request, response) => {
 
 app.post('/api/submitRequest/', async (request: any, response: any) => {
   response.send('POST request to DB')
-  const newRequest: any = request
+  const newRequest: any = request.body
   {
     console.log('Start POST in DB')
     await getDatabase().insertOne(newRequest)
